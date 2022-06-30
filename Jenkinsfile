@@ -1,0 +1,14 @@
+pipeline {
+    stages {
+        stage('Initialize') {
+            steps {
+                //enable remote triggers
+                script {
+                    properties([pipelineTriggers([pollSCM('')])])
+                }
+                //define scm connection for polling
+                git branch: 'main', credentialsId: 'cb3a0841-0476-494c-b8df-1f2ea6cebcd3', url: 'https://github.com/JaleelBasha123/Publicrepo1.git'
+            }
+        }
+    }
+}
